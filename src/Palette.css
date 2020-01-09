@@ -1,0 +1,49 @@
+h1, h3{
+    margin: 0;
+    padding: 0;
+}
+
+.Palette{
+    height: 100vh;
+}
+
+.Palette-colors{
+    height: 90%;
+}
+
+.copy-overlay{
+    z-index: 0;
+    width: 100vw;
+    height: 0%;
+
+}
+
+.copy-overlay-message-container{
+    width: 100%;
+    text-align: center;
+    background: rgb(255,255,255, 0.3);
+    color: white;
+    
+}
+
+.copy-overlay-message-container h1{
+    font-size: 4rem;
+}
+
+.copy-overlay-message-container h3{
+    font-size: 2rem;
+}
+
+.show{
+    height: 100vh;
+    display: inline-block;
+    position: absolute;
+    z-index: 5;
+    transition: height 0.4s;
+    transition-timing-function: ease-in;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
