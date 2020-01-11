@@ -2,12 +2,14 @@ import React from 'react';
 import './App.css';
 import Palette from './Palette'
 import seedColors from './seedColors'
+import generatePalette from './colorHelpers'
 
 
 function App() {
   return (
     <div className="App">
-      <Palette {...seedColors[Math.round(Math.random()*seedColors.length)]}/>
+      {console.log(generatePalette(seedColors[Math.round(Math.random() * seedColors.length)]))}
+      <Palette {...generatePalette(seedColors[3])} />
     </div>
   );
 }

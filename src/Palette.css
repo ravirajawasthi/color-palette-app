@@ -15,6 +15,8 @@ h1, h3{
     z-index: 0;
     width: 100vw;
     height: 0%;
+    transition: height 0.4s;
+    transition-timing-function: ease-in;
 
 }
 
@@ -27,11 +29,13 @@ h1, h3{
 }
 
 .copy-overlay-message-container h1{
-    font-size: 4rem;
+    font-size: 7rem;
+    font-weight: 600;
 }
 
 .copy-overlay-message-container h3{
     font-size: 2rem;
+    font-weight: 200;
 }
 
 .show{
@@ -45,5 +49,4 @@ h1, h3{
     justify-content: center;
     align-items: center;
 }
-
 
