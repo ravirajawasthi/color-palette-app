@@ -10,29 +10,44 @@ class Palette extends Component {
         this.state = {
             copied: false,
             copiedColor: "",
-            level: 500
+            level: 500,
+            colorFormat: 'hex',
+            snackbarBool: false
         }
         this.triggerCopy = this.triggerCopy.bind(this)
         this.changeLevel = this.changeLevel.bind(this)
+        this.changeColorFormat = this.changeColorFormat.bind(this)
+        this.handleSnackbar = this.handleSnackbar.bind(this)
     }
 
     changeLevel(n) {
         this.setState({ level: n })
     }
 
+    changeColorFormat(e) {
+        this.setState({ colorFormat: e.target.value, snackbarBool: true })
+    }
+
     triggerCopy(color) {
-        this.setState({ copied: true, copiedColor: color.hex }, () => setTimeout(() => {
-            this.setState({ copied: false })
+        this.setState({ copied: true, copiedColor: color[this.state.colorFormat] }, () => setTimeout(() => {
+            this.setState({ copied: false, })
         }, 1100))
 
     }
 
+    handleSnackbar() {
+        console.log("handle snackbar called")
+        this.setState({ snackbarBool: false })
+    }
+
     render() {
-        const colorBoxes = this.props.colors[this.state.level].map(color => <ColorBox key={uuid()} triggerCopy={() => this.triggerCopy(color)} background={color.hex} name={color.name} />)
-        const { copiedColor, copied } = this.state
+        const { copiedColor, copied, level, colorFormat, snackbarBool } = this.state
+        const { colors, paletteName, emoji, color } = this.props.palette
+        console.log(color, colors)
+        const colorBoxes = colors[level].map(color => <ColorBox key={uuid()} triggerCopy={() => this.triggerCopy(color)} background={color[colorFormat]} name={color.name} />)
         return (
             <div className='Palette'>
-                <Navbar level={this.state.level} changeLevel={this.changeLevel} />
+                <Navbar level={level} changeLevel={this.changeLevel} changeColorFormat={this.changeColorFormat} format={colorFormat} snackbarBool={snackbarBool} handleSnackbar={this.handleSnackbar} />
                 <div className="Palette-colors">
                     <div style={{ background: copiedColor }} className={`copy-overlay ${copied ? "show" : ""}`}>
 
@@ -46,10 +61,13 @@ class Palette extends Component {
                                 <span></span>
 
                         }
-
                     </div>
                     {colorBoxes}
                 </div>
+                <footer className="Palette-footer">
+                    {paletteName}
+                    <span className="Palette-footer-emoji">{emoji}</span>
+                </footer>
             </div>
         )
     }

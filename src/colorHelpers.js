@@ -49,7 +49,7 @@ function generatePalette(seedColor) {
                 id: color.name.toLowerCase().replace(/ /g, "-"),
                 rgb: chroma(colors[i]).css(),
                 hex: colors[i],
-                rgba: chroma(colors[i]).css().replace("rgb", "rgba").replace(")", ", 1.0)")
+                rgba: chroma(colors[i]).css().replace("rgb", "rgba").replace(")", ",1.0)")
             }
             newPalette.colors[levels[i]].push(colorObj)
         }
