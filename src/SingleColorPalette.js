@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import uuid from 'uuid';
 import ColorBox from './ColorBox';
 import Navbar from './Navbar';
 import PaletteFooter from './PaletteFooter';
-import './Palette.css';
+import uuid from 'uuid';
+import { Link } from 'react-router-dom';
+import './SingleColorPalette.css'
 
-class Palette extends Component {
+class SingleColorPalette extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -15,6 +16,7 @@ class Palette extends Component {
             colorFormat: 'hex',
             snackbarBool: false
         }
+        this.gatherShades = this.gatherShades.bind(this)
         this.triggerCopy = this.triggerCopy.bind(this)
         this.changeLevel = this.changeLevel.bind(this)
         this.changeColorFormat = this.changeColorFormat.bind(this)
@@ -41,16 +43,23 @@ class Palette extends Component {
         this.setState({ snackbarBool: false })
     }
 
+    gatherShades(palette, colorId) {
+        let shades = []
+        palette.colors.map((colorShade) => shades.push(colorShade.find(color => color.id === colorId)))
+        shades.shift()
+        return shades
+    }
+
     render() {
-        const { copiedColor, copied, level, colorFormat, snackbarBool } = this.state
-        const { colors, paletteName, emoji, id } = this.props.palette
-        const colorBoxes = colors[level].map(color => <ColorBox key={uuid()} triggerCopy={() => this.triggerCopy(color)} background={color[colorFormat]} name={color.name} paletteId={id} colorId={color.id} />)
+        const { palette } = this.props
+        const { copiedColor, copied, colorFormat, snackbarBool, level } = this.state
+        let shades = this.gatherShades(palette, this.props.match.params.colorId)
+        let colorBoxes = shades.map(color => <ColorBox singeColorMode={true} key={uuid()} triggerCopy={() => this.triggerCopy(color)} background={color[colorFormat]} name={color.name} />)
         return (
             <div className='Palette'>
-                <Navbar SingleColorMode={false} level={level} changeLevel={this.changeLevel} changeColorFormat={this.changeColorFormat} format={colorFormat} snackbarBool={snackbarBool} handleSnackbar={this.handleSnackbar} />
-                <div className="Palette-colors">
+                <Navbar SingleColorMode={true} level={level} changeLevel={this.changeLevel} changeColorFormat={this.changeColorFormat} format={colorFormat} snackbarBool={snackbarBool} handleSnackbar={this.handleSnackbar} />
+                <div className="SinglePalette-colors">
                     <div style={{ background: copiedColor }} className={`copy-overlay ${copied ? "show" : ""}`}>
-
                         {
                             copied ?
                                 <div className="copy-overlay-message-container">
@@ -59,15 +68,18 @@ class Palette extends Component {
                                 </div>
                                 :
                                 <span></span>
-
                         }
                     </div>
                     {colorBoxes}
+                    <div className="ColorBox go-back">
+                        <Link className="back-button" to={`/palette/${palette.id}`}>Go Back!</Link>
+                    </div>
                 </div>
-                <PaletteFooter paletteName={paletteName} emoji={emoji} />
+                <PaletteFooter paletteName={palette.paletteName} emoji={palette.emoji} />
             </div>
         )
     }
 }
 
-export default Palette
+
+export default SingleColorPalette

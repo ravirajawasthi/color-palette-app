@@ -11,18 +11,18 @@ import './Navbar.css'
 
 class Navbar extends Component {
     render() {
-        let { level, changeLevel, changeColorFormat, format, handleSnackbar, snackbarBool } = this.props
+        let { level, changeLevel, changeColorFormat, format, handleSnackbar, snackbarBool, SingleColorMode } = this.props
         return (
             <header className="Navbar" >
                 <div className="logo">
                     <Link to="/">reactcolorpicker</Link>
                     <div className="slider-container">
-                        <div className="slider">
-                            <span className="slider-level">Level : {level}</span>
-                            <Slider step={100} defaultValue={level} min={100} max={900} onAfterChange={changeLevel} />
-                        </div>
                     </div>
                 </div>
+                {!SingleColorMode && <div className="slider">
+                    <span className="slider-level">Level : {level}</span>
+                    <Slider step={100} defaultValue={level} min={100} max={900} onAfterChange={changeLevel} />
+                </div>}
                 <Select className="select-menu" value={format} onChange={(e) => changeColorFormat(e)}>
                     <MenuItem value={"hex"}>HEX - #ffffff</MenuItem>
                     <MenuItem value={"rgb"}>RGB - rgb(255, 255, 255)</MenuItem>

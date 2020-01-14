@@ -1,19 +1,22 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom';
 import MiniPalette from './MiniPalette'
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = {
     mainContainer: {
+        backgroundColor: "lightblue",
+        height: "100vh",
+
+    },
+    listContainer: {
         width: "50%",
         margin: "auto",
-        backgroundColor: "lightblue",
     },
     nav: {
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
-        margin: "2rem 0"
+        marginBottom: "2rem"
     },
     palettesContainer: {
         display: "grid",
@@ -24,19 +27,24 @@ const styles = {
 }
 
 class PaletteList extends Component {
+    goToPalette(id) {
+        console.log("onClick on minipalette called")
+        this.props.history.push(`/palette/${id}`)
+    }
     render() {
         const { palettes, classes } = this.props
         return (
             <div className={classes.mainContainer}>
-                <div className={classes.nav}>
-                    <h1 className={classes.navTitle}>React Colors</h1>
+                <div className={classes.listContainer}>
+                    <div className={classes.nav}>
+                        <h1 className={classes.navTitle}>React Colors</h1>
+                    </div>
+                    <div className={classes.palettesContainer}>
+                        {palettes.map(palette => (
+                            <MiniPalette key={palette.id} palette={palette} handleClick={() => { this.goToPalette(palette.id) }} />
+                        ))}
+                    </div>
                 </div>
-                <div className={classes.palettesContainer}>
-                    {palettes.map(palette => (
-                        <Link style={{ textDecoration: "none", color: "black" }} to={`/palette/${palette.id}`}><MiniPalette palette={palette} /></Link>
-                    ))}
-                </div>
-
             </div>
         )
     }

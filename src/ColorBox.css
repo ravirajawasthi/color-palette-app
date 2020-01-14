@@ -4,9 +4,17 @@
     display: inline-block;
     position: relative;   
     margin: 0 auto;
-    margin-bottom: -3.6px;
     cursor: pointer;
-    color: white
+    color: white;
+    margin-bottom: -3.7px;
+}
+
+.SinglePalette-colors .ColorBox{
+    height: 50%;
+}
+
+.go-back{
+    background: black;
 }
 
 .ColorBox-name {
@@ -18,7 +26,7 @@
     font-size: 1rem;
 }
 
-.copy-button{
+.copy-button, .back-button{
     position: absolute;
     width: 100px;
     height: 30px;
@@ -29,8 +37,17 @@
     top: 50%;
     right: 50%;
     font-size: 15px;
-    opacity: 0;
     color: white;
+    text-decoration: none;
+}
+.copy-button{
+    opacity: 0;
+}
+
+.back-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .see-more{

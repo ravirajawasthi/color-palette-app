@@ -1,0 +1,65 @@
+h1, h3{
+    margin: 0;
+    padding: 0;
+}
+
+.Palette{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.SinglePalette-colors{
+    height: 90%;
+}
+
+.copy-overlay{
+    z-index: 0;
+    width: 100vw;
+    height: 0%;
+    transition: height 0.4s;
+    transition-timing-function: ease-in;
+
+}
+
+.copy-overlay-message-container{
+    width: 100%;
+    text-align: center;
+    background: rgb(255,255,255, 0.3);
+    color: white;
+    
+}
+
+.copy-overlay-message-container h1{
+    font-size: 7rem;
+    font-weight: 600;
+}
+
+.copy-overlay-message-container h3{
+    font-size: 2rem;
+    font-weight: 200;
+}
+
+.show{
+    height: 100vh;
+    display: inline-block;
+    position: fixed;
+    z-index: 5;
+    transition: height 0.4s;
+    transition-timing-function: ease-in;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Palette-footer{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-weight: bold;
+}
+
+.Palette-footer-emoji{
+    margin: 5px;
+    font-size: 1rem;
+}
