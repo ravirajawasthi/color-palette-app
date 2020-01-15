@@ -3,6 +3,7 @@ import uuid from 'uuid';
 import ColorBox from './ColorBox';
 import Navbar from './Navbar';
 import PaletteFooter from './PaletteFooter';
+import chroma from 'chroma-js'
 import './Palette.css';
 
 class Palette extends Component {
@@ -10,7 +11,7 @@ class Palette extends Component {
         super(props)
         this.state = {
             copied: false,
-            copiedColor: "",
+            copiedColor: "#ffffff",
             level: 500,
             colorFormat: 'hex',
             snackbarBool: false
@@ -44,6 +45,7 @@ class Palette extends Component {
     render() {
         const { copiedColor, copied, level, colorFormat, snackbarBool } = this.state
         const { colors, paletteName, emoji, id } = this.props.palette
+        const isDark = chroma(copiedColor).luminance() >= 0.08
         const colorBoxes = colors[level].map(color => <ColorBox key={uuid()} triggerCopy={() => this.triggerCopy(color)} background={color[colorFormat]} name={color.name} paletteId={id} colorId={color.id} />)
         return (
             <div className='Palette'>
@@ -53,9 +55,9 @@ class Palette extends Component {
 
                         {
                             copied ?
-                                <div className="copy-overlay-message-container">
-                                    <h1 className="copy-overlay-message">Copied</h1>
-                                    <h3 className="copy-overlay-color">{copiedColor}</h3>
+                                <div className={`copy-overlay-message-container `}>
+                                    <h1 className={`copy-overlay-message ${isDark >= 0.08 ? "dark-text" : "white-text"}`}>Copied</h1>
+                                    <h3 className={`copy-overlay-color ${isDark >= 0.08 ? "dark-text" : "white-text"}`}>{copiedColor}</h3>
                                 </div>
                                 :
                                 <span></span>

@@ -26,8 +26,6 @@ h1, h3{
     width: 100%;
     text-align: center;
     background: rgb(255,255,255, 0.3);
-    color: white;
-    
 }
 
 .copy-overlay-message-container h1{
@@ -62,4 +60,12 @@ h1, h3{
 .Palette-footer-emoji{
     margin: 5px;
     font-size: 1rem;
+}
+
+.dark-text{
+    color: black;
+}
+
+.white-text{
+    color: white;
 }

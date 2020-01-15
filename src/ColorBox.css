@@ -5,7 +5,6 @@
     position: relative;   
     margin: 0 auto;
     cursor: pointer;
-    color: white;
     margin-bottom: -3.7px;
 }
 
@@ -37,7 +36,6 @@
     top: 50%;
     right: 50%;
     font-size: 15px;
-    color: white;
     text-decoration: none;
 }
 .copy-button{
@@ -61,9 +59,15 @@
     right: 0;
     font-size: 15px;
     text-align: center;
-    color: white;
 }
 
+.dark-text{
+    color: black;
+}
+
+.white-text{
+    color: white;
+}
 
 .ColorBox:hover .copy-button{
     opacity: 1;
