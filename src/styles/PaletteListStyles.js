@@ -12,7 +12,11 @@ export default {
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
-        marginBottom: "2rem"
+        marginBottom: "2rem",
+        paddingTop: "20px",
+        "& a":{
+            color: "white"
+        }
     },
     palettesContainer: {
         display: "grid",
