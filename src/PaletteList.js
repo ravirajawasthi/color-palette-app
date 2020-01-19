@@ -1,34 +1,10 @@
-import React, { Component } from 'react'
-import MiniPalette from './MiniPalette'
+import React, { Component } from 'react';
+import MiniPalette from './MiniPalette';
+import styles from './styles/PaletteListStyles';
 import { withStyles } from '@material-ui/core/styles';
-
-const styles = {
-    mainContainer: {
-        backgroundColor: "lightblue",
-        height: "100vh",
-
-    },
-    listContainer: {
-        width: "50%",
-        margin: "auto",
-    },
-    nav: {
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        marginBottom: "2rem"
-    },
-    palettesContainer: {
-        display: "grid",
-        gridTemplateColumns: "30% 30% 30%",
-        gridGap: "7% 3%"
-    },
-
-}
 
 class PaletteList extends Component {
     goToPalette(id) {
-        console.log("onClick on minipalette called")
         this.props.history.push(`/palette/${id}`)
     }
     render() {
