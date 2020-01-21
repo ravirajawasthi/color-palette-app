@@ -14,8 +14,8 @@ const styles={
 }
 
 function DraggableColorBox(props){
-    const {color, classes} = props
-    return <div className={classes.root} style={{backgroundColor: color}}>{color}</div>
+    const {name, color, classes} = props
+    return <div className={classes.root} style={{backgroundColor: color}}>{name}</div>
 }
 
 export default withStyles(styles)(DraggableColorBox)
