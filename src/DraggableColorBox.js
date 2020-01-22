@@ -17,9 +17,11 @@ const styles={
         position: "absolute",
         bottom: "0",
         width: "100%",
+        boxSizing: "border-box",
     },
     boxContent: {
-        marginTop: "100%",
+        marginBottom: "5px",
+        boxSizing: "border-box",
         padding: "10px",
         display: "flex",
         justifyContent: "space-between",
