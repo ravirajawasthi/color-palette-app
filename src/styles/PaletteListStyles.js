@@ -21,7 +21,7 @@ export default {
     palettesContainer: {
         display: "grid",
         gridTemplateColumns: "30% 30% 30%",
-        gridGap: "7% 3%"
+        gridGap: "3% 3%"
     },
 
 }

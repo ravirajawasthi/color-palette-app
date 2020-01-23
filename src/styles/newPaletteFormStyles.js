@@ -1,4 +1,4 @@
-import {DRAWER_WIDTH} from '../constants'
+import DRAWER_WIDTH from '../constants'
 const drawerWidth = DRAWER_WIDTH
 
 
@@ -28,7 +28,7 @@ export default theme => ({
   content: {
     height: "calc(100vh - 64px)",
     flexGrow: 1,
-    padding: theme.spacing(3),
+    padding: 0,
     transition: theme.transitions.create("margin", {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./App.css";
 import PaletteList from "./PaletteList";
 import Palette from "./Palette";
 import SingleColorPalette from "./SingleColorPalette";
@@ -10,11 +9,16 @@ import { Switch, Route } from "react-router-dom";
 
 class App extends Component {
   constructor(props) {
+    const savedPalettes = JSON.parse(window.localStorage.getItem("palettes"))
     super(props);
     this.state = {
-      palettes: seedColors
+      palettes: savedPalettes || seedColors
     };
     this.saveNewPalette = this.saveNewPalette.bind(this);
+  }
+  
+  saveToLocalStorage(){
+    window.localStorage.setItem("palettes", JSON.stringify(this.state.palettes))
   }
 
   saveNewPalette(colors, nameObj) {
@@ -26,7 +30,7 @@ class App extends Component {
     };
     this.setState(st => {
       return { palettes: [...st.palettes, paletteObj] };
-    });
+    }, this.saveToLocalStorage);
   }
 
   findPalette(id) {
