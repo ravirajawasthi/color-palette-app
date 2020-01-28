@@ -22,14 +22,15 @@ class NewPaletteForm extends React.Component {
     super(props);
     this.state = {
       open: false,
-      colors: this.props.palettes[0].colors,
-      
+      colors: this.props.seedColors[0].colors,
     };
     this.addNewColor = this.addNewColor.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.removeColor = this.removeColor.bind(this)
+    this.clearPalette = this.clearPalette.bind(this)
+    this.addNewColor = this.addNewColor.bind(this)
+    this.randomColor = this.randomColor.bind(this)
   }
-
-
 
 	removeColor(colorName){
 		this.setState(st => {
@@ -62,10 +63,10 @@ class NewPaletteForm extends React.Component {
   };
 
 
-  addNewColor(newColor) {
+  addNewColor(newColorObj) {
     let colorObj = {
-      name: this.state.colorName,
-      color: this.state.currentColor
+      name: newColorObj.colorName,
+      color: newColorObj.currentColor
     };
     this.setState(st => {
       return {
@@ -124,7 +125,7 @@ class NewPaletteForm extends React.Component {
               Random Color
             </Button>
           </div>
-					<ColorPickerForm isPaletteFull={isPaletteFull} colors={colors}/>
+					<ColorPickerForm isPaletteFull={isPaletteFull} colors={colors} addNewColor={this.addNewColor}/>
 				</div>
         </Drawer>
         <main

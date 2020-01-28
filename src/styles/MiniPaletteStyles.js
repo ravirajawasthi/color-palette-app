@@ -1,12 +1,16 @@
-
 export default {
     mainContainer: {
         border: "1px solid black",
         textTransform: "none",
         borderRadius: "5px",
-        lineHeight: "2.2rem",
         padding: "5px",
-        backgroundColor: "white"
+        lineHeight: "2.2rem",
+        backgroundColor: "white",
+        position: "relative",
+        cursor: "pointer",
+        "&:hover svg":{
+            opacity: "1"
+        }
     },
     title: {
         display: "flex",
@@ -24,7 +28,7 @@ export default {
         overflow: "hidden",
         boxSizing: "border-box",
         border: "1px solid black",
-        borderRadius: "2px"
+        borderRadius: "2px",
 
     },
     MiniBox: {
@@ -34,4 +38,19 @@ export default {
         margin: "0",
         padding: "0",
     },
+    DeleteIcon: {
+        backgroundColor: "red",
+        zIndex: "5",
+        position: "absolute",
+        right: "0",
+        top: "0",
+        color: "white",
+        padding: "5px",
+        borderRadius: "2px",
+        opacity: "0",
+        transition: "all 0.3s ease-in",
+    },
+    DeleteIconContainer:{
+        overflow: "hidden"
+    }
 }
