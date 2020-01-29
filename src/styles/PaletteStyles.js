@@ -1,3 +1,4 @@
+import sizes from './size';
 
 export default  {
     Palette: {
@@ -39,7 +40,18 @@ export default  {
             justifyContent: "center",
             alignItems: "center",
             color: "white",
+        },
+        [sizes.down("lg")]: {
+            height: "33.3333333%",  
+            width: "25%"
+        },
+        [sizes.down("md")]: {
+            height: "20%",
+            width: "50%"
+        },
+        [sizes.down("sm")]: {
+            height: "10%",
+            width: "100%"
         }
-    
-    }
+    },
 }

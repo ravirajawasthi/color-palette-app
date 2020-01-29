@@ -1,27 +1,53 @@
+import sizes from "./size";
+import bg from './bg.svg'
+
 export default {
-    mainContainer: {
-        backgroundColor: "lightblue",
-        height: "100vh",
+  mainContainer: {
+    height: "100vh",
+    backgroundColor: "#cc81c3",
 
+    /* background by SVGBackgrounds.com */
+    backgroundImage: `url(${bg})`,
+    overflow: "scroll"
+  },
+  listContainer: {
+    width: "53%",
+    margin: "auto",
+    [sizes.down("lg")]: {
+        width: "80%"
     },
-    listContainer: {
-        width: "50%",
-        margin: "auto",
+    [sizes.down("md")]: {
+      width: "90%"
     },
-    nav: {
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        marginBottom: "2rem",
-        paddingTop: "20px",
-        "& a":{
-            color: "white"
-        }
+    [sizes.down("xs")]: {
+        width: "95%"
+    }
+  },
+  nav: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: "2rem",
+    paddingTop: "20px",
+    fontFamily: "'Montserrat', 'sans-serif'",
+    "& a": {
+      color: "white"
+    }
+  },
+  navTitle: {
+      color: "white",
+  },
+  palettesContainer: {
+    display: "grid",
+    gridTemplateColumns: "31% 31% 31%",
+    gridGap: "1.5rem",
+    [sizes.down("sm")]: {
+        gridTemplateColumns: "50% 50%",
+        
     },
-    palettesContainer: {
-        display: "grid",
-        gridTemplateColumns: "30% 30% 30%",
-        gridGap: "3% 3%"
-    },
-
-}
+    [sizes.down("xs")]: {
+        gridTemplateColumns: "100%",
+        padding: "0 10%"
+    }
+  },
+};

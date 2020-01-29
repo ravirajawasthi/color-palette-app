@@ -1,3 +1,5 @@
+import sizes from './size'
+
 export default  {
     Navbar: {
         display: "flex",
@@ -18,7 +20,11 @@ export default  {
         "& a": {
             textDecoration: "none",
             color: "black",
+        },
+        [sizes.down("xs")]: {
+            display: "none"
         }
+
     },
     
     slider: {

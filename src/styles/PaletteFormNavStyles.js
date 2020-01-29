@@ -1,4 +1,5 @@
 import DRAWER_WIDTH from '../constants'
+import sizes from './size'
 const drawerWidth = DRAWER_WIDTH
 
 export default theme => ({
@@ -6,7 +7,8 @@ export default theme => ({
     transition: theme.transitions.create(["margin", "width"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen
-    })
+    }),
+    maxWidth: "100%"
   },
   appBarShift: {
     width: `calc(100% - ${drawerWidth}px)`,
@@ -18,7 +20,10 @@ export default theme => ({
   },
   menuButton: {
     marginLeft: 12,
-    marginRight: 20
+    marginRight: 20,
+    [sizes.down("sm")]: {
+      margin: "0"
+    }
   },
   hide: {
     display: "none"
@@ -33,10 +38,19 @@ export default theme => ({
     margin: "0 20px",
     "& a": {
       textDecoration: "none"
+    },
+    [sizes.down("xs")]:{
+      margin: "0"
     }
   },
   actionBtns: {
     margin: "0 0.5rem",
-    display: "inline"
+    display: "inline",
+    "& button": {
+      [sizes.down('sm')]:{
+        margin: "0 2px",
+        padding: "0.2rem"
+      }
+    }
   }
 });

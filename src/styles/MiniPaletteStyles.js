@@ -1,6 +1,5 @@
 export default {
     mainContainer: {
-        border: "1px solid black",
         textTransform: "none",
         borderRadius: "5px",
         padding: "5px",
@@ -24,11 +23,10 @@ export default {
         width: "100%",
         backgroundColor: "grey",
         display: "flex",
+        alignContent: "flex-start",
         flexWrap: "wrap",
         overflow: "hidden",
         boxSizing: "border-box",
-        border: "1px solid black",
-        borderRadius: "2px",
 
     },
     MiniBox: {

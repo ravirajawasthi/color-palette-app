@@ -1,4 +1,5 @@
 import chroma from 'chroma-js'
+import sizes from './size'
 
 export default {
     textColor: {
@@ -27,6 +28,18 @@ export default {
         "&:hover button": {
             opacity: "1",
             transition: "0.2s opacity ease-in-out"
+        },
+        [sizes.down("lg")]: {
+            height: props => props.singleColorMode ? "33.333%": "20%",
+            width: "25%"
+        },
+        [sizes.down("md")]: {
+            height: props => props.singleColorMode ? "20%": "10%",
+            width: "50%"
+        },
+        [sizes.down("sm")]: {
+            height: props => props.singleColorMode ? "10%": "5%",
+            width: "100%"
         }
     },
     copyButton: {
