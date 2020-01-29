@@ -2,13 +2,25 @@ import sizes from "./size";
 import bg from './bg.svg'
 
 export default {
+  "@global":{
+    ".fade-exit": {
+      opacity: "1"
+    },
+    ".fade-exit-active": {
+      opacity: "0",
+      transition: "opacity 200ms ease-in-out"
+    }
+  },
   mainContainer: {
     height: "100vh",
     backgroundColor: "#cc81c3",
 
     /* background by SVGBackgrounds.com */
     backgroundImage: `url(${bg})`,
-    overflow: "scroll"
+    overflow: "hidden",
+    [sizes.down("sm")]: {
+      overflow: "scroll"
+    }
   },
   listContainer: {
     width: "53%",
@@ -50,4 +62,12 @@ export default {
         padding: "0 10%"
     }
   },
+  DeleteDialog: {
+    backgroundColor: "#2AA72D",
+    color: "#FCEBE7"
+  },
+  CancelDialog: {
+    backgroundColor: "#F35A39",
+    color: "#FCEBE7"
+  }
 };

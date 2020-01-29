@@ -45,8 +45,7 @@ class App extends Component {
     }
   }
 
-  deletePalette(evt, id){
-    evt.stopPropagation();
+  deletePalette(id){
     this.setState(st => {
       const palettes = st.palettes.filter(palette => palette.id !== id)
       return {palettes: palettes}
