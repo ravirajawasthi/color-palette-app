@@ -1,0 +1,28 @@
+.Page {
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    transition: opacity 0.5s ease-in, transform 0.5s ease-out;
+}
+
+.Page-enter{
+    opacity: 0;
+    transform: translateX(-100%);
+}
+
+.Page-enter-active{
+    opacity: 1;
+    transform: translateX(0%);
+}
+
+.Page-exit{
+    opacity: 1;
+    transform: translateX(0%);
+}
+
+.Page-exit-active{
+    opacity: 0;
+    transform: translateX(100%);
+}
+
+  

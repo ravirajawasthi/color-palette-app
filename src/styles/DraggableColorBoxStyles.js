@@ -1,4 +1,5 @@
 import sizes from './size'
+import chroma from 'chroma-js'
 export default {
     root: {
         width: "20%",
@@ -28,11 +29,11 @@ export default {
         boxSizing: "border-box",
     },
     boxContent: {
+        color: props => chroma(props.color).luminance() >= 0.08 ? "rgb(0,0,0,0.5)" : "white",
         boxSizing: "border-box",
         padding: "5px 10px",
         display: "flex",
         justifyContent: "space-between",
-        color: "rgb(0,0,0,0.5)",
         "& svg:hover":{
             color: "white",
             transform: "scale(1.4)"

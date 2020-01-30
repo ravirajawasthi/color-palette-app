@@ -20,6 +20,7 @@ class PaletteNameNavForm extends Component {
     this.handleClose = this.handleClose.bind(this);
     this.openNameForm = this.openNameForm.bind(this);
     this.openEmojiForm = this.openEmojiForm.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -43,10 +44,14 @@ class PaletteNameNavForm extends Component {
   handleChange(evt) {
     this.setState({ [evt.target.name]: evt.target.value });
   }
+  handleSubmit(paletteName, emoji){
+    this.props.handleSubmit(paletteName, emoji)
+    this.setState({stage: ""})
+  }
 
   render() {
     const { paletteName, stage } = this.state;
-    const { handleSubmit, classes } = this.props;
+    const { classes } = this.props;
     return (
       <div className={classes.actionBtns}>
         <Button
@@ -60,7 +65,7 @@ class PaletteNameNavForm extends Component {
           <Picker
             title="Pick your emoji…"
             emoji="point_up"
-            onSelect={emoji => handleSubmit(paletteName, emoji.native)}
+            onSelect={emoji => this.handleSubmit(paletteName, emoji.native)}
           />
         </Dialog>
         <Dialog

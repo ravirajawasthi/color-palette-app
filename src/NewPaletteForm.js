@@ -87,8 +87,15 @@ class NewPaletteForm extends React.Component {
 	};
 	
 	randomColor(){
-		const allColors = this.props.palettes.map(palette => palette.colors).flat()
-		const rand = Math.round(Math.random() * allColors.length)
+    let duplicate=true;
+    const allColors = this.props.palettes.map(palette => palette.colors).flat()
+    let rand;
+    let pickedColor;
+    while(duplicate){
+      rand = Math.round(Math.random() * allColors.length)
+      pickedColor = allColors[rand];
+      duplicate = this.state.colors.some(color => color.name === pickedColor.name);
+    }
 		this.setState({colors: [...this.state.colors, allColors[rand]]})
 	}
 

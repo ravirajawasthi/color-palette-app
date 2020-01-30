@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import MiniPalette from "./MiniPalette";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Dialog from "@material-ui/core/Dialog";
@@ -14,7 +14,7 @@ import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { withStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
 
-class PaletteList extends Component {
+class PaletteList extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -24,7 +24,8 @@ class PaletteList extends Component {
     };
     this.handleDialogOpen = this.handleDialogOpen.bind(this);
     this.handleDialogClose = this.handleDialogClose.bind(this);
-    this.handlePaletteDelete = this.handlePaletteDeleteg.bind(this)
+    this.handlePaletteDelete = this.handlePaletteDelete.bind(this);
+    this.goToPalette = this.goToPalette.bind(this)
   }
   goToPalette(id) {
     this.props.history.push(`/palette/${id}`);
@@ -59,9 +60,7 @@ class PaletteList extends Component {
                   id={palette.id}
                   key={palette.id}
                   palette={palette}
-                  handleClick={() => {
-                    this.goToPalette(palette.id);
-                  }}
+                  handleClick={this.goToPalette}
                 />
               </CSSTransition>
             ))}
