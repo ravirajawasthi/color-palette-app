@@ -93,8 +93,7 @@ class NewPaletteForm extends React.Component {
     let pickedColor;
     while(duplicate){
       rand = Math.round(Math.random() * allColors.length)
-      pickedColor = allColors[rand];
-      duplicate = this.state.colors.some(color => color.name === pickedColor.name);
+      duplicate = this.state.colors.some(color => color.name === allColors[rand]);
     }
 		this.setState({colors: [...this.state.colors, allColors[rand]]})
 	}
