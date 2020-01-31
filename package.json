@@ -1,7 +1,7 @@
 {
   "name": "color-palette-app",
   "version": "0.1.0",
-  "homepage": ".",
+  "homepage": "https://ravirajawasthi.gitlab.io/color-palette-app",
   "private": true,
   "engines": {
     "node": "10.0"
