@@ -20,7 +20,7 @@ pages:
   stage: deploy
   script:
     - rm -rf node_modules
-    - npm cache clean
+    - npm cache clean --force
     - rm package-lock.json
     - npm install # Install all dependencies
     - npm run-script build # Build for prod
